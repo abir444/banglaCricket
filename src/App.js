@@ -20,7 +20,7 @@ class App extends Component {
       //isLogin : false,  
     };
    
-    
+ 
     this.handleChange=this.handleChange.bind(this);
     //this.submit=this.submit.bind(this);
   }
@@ -47,7 +47,7 @@ class App extends Component {
     });
     console.log(list);
 
-    this.setState(data);
+    this.setState(list);// 
     console.log(name,value);
 
   }
