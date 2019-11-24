@@ -3,34 +3,68 @@ import DateTimePicker from 'react-datetime-picker';
 import './App.css';
 import Login from './Login';
 import Register from './Register';
-import {
-  BrowserRouter as Router,
-  Route,
-  Link,
-} from "react-router-dom";
+
 
 class App extends Component {
-  
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      list : [],
+      // uname : '',
+      // fname : '',
+      // Lname : '',
+      // email : '',
+      // psw   : '',
+      // date: new Date(),
+      //isLogin : false,  
+    };
+   
+    
+    this.handleChange=this.handleChange.bind(this);
+    //this.submit=this.submit.bind(this);
+  }
+ /////////////////////////////
+
+ ///////////////////////////
+
+
+  handleChange(event){
+    let name = event.target.name;
+    let value = event.target.value;
+    let list = [];
+    let data =[];
+   // let d =  new Date();
+    data[name]=value;
+    list.push({
+      userName : value.uname,
+      fullName : value.fname,
+      lastName : value.lname,
+      email    : value.email,
+      dob      : value.date,
+      password : value.psw,
+
+    });
+    console.log(list);
+
+    this.setState(data);
+    console.log(name,value);
+
+  }
+
   render() {
     return (
-      <Router>
+    
         <div className = "App">
-        <ul>
-          <li>
-            <Link to ='/Login'>Login</Link>
-            <Link to ='/Register'>Register</Link>
-            <Link to ='/Home'>Home</Link>
-          </li>
-        </ul>
         <div>
-        <Route path='/login' component = {Login} />  
-        <Route path='/register' component = {Register} />  
-        </div>  
-      
-
+        <Login/>
+        </div>
+        <div>
+        <Register/>
+        </div>
         </div>
  
-      </Router>
+      
     );
   }
 }

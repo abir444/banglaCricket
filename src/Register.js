@@ -1,54 +1,29 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './App.css';
 import DateTimePicker from 'react-datetime-picker';
-class Register extends Component {
-
-  constructor(props) {
-    super(props);
-    this.state = {
-      uname : '',
-      fname : '',
-      Lname : '',
-      email : '',
-      psw   : '',
-      date: new Date(),
-    };
-    
-    this.handleChange=this.handleChange.bind(this);
-    //this.submit=this.submit.bind(this);
-  }
-
-  handleChange(event){
-    let name = event.target.name;
-    let value = event.target.value;
-    let data ={};
-    data[name]=value;
-    this.setState(data);
-    console.log(name,value);
-
-  }
+const Register = (props) => {
 
 
-  render() {
+
     return (
       
-        <div className = "App">
-          <form>
+        <div className = "AppR">
+          <form onSubmit ={props.submit}>
            <h3>Bangla Cricket Team</h3>
            <div>
             <div>Register</div>
-            <input type="text" placeholder="Username" value={this.state.uname} onChange={this.handleChange} name="uname" required/>
+            <input type="text" placeholder="Username" value={props.uname} onChange={props.handleChange} name="uname" required/>
             <br/>
-            <input type="text" placeholder="First Name" value={this.state.fname} onChange={this.handleChange} name="fname" required/>
+            <input type="text" placeholder="First Name" value={props.fname} onChange={props.handleChange} name="fname" required/>
             <br/>
-            <input type="text" placeholder="Last Name" value={this.state.lname} onChange={this.handleChange}  name="lname" required/>
+            <input type="text" placeholder="Last Name" value={props.lname} onChange={props.handleChange}  name="lname" required/>
             <br/>
-            <input type="text" placeholder="Email" value={this.state.email} onChange={this.handleChange}  name="email" required/>
+            <input type="text" placeholder="Email" value={props.email} onChange={props.handleChange}  name="email" required/>
             <br/>
-            <input type="password" placeholder="Enter Password" value={this.state.psw} onChange={this.handleChange}  name="psw" required/>
+            <input type="password" placeholder="Enter Password" value={props.psw} onChange={props.handleChange}  name="psw" required/>
             <div>
-            <DateTimePicker name = "date" value={this.state.date}
-             handleChange={this.handleChange}
+            <DateTimePicker name = "date" value={props.date}
+             handleChange={props.handleChange}
             
             />
             </div>
@@ -57,11 +32,9 @@ class Register extends Component {
           </form>
         
         </div>
- 
-      
     );
   }
-}
+
 
 
 
