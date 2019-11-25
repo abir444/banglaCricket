@@ -3,8 +3,6 @@ import DateTimePicker from 'react-datetime-picker';
 import './App.css';
 import Login from './Login';
 import Register from './Register';
-
-
 class App extends Component {
 
   constructor(props) {
@@ -19,16 +17,9 @@ class App extends Component {
       // date: new Date(),
       //isLogin : false,  
     };
-   
- 
     this.handleChange=this.handleChange.bind(this);
-    //this.submit=this.submit.bind(this);
+    // this.submit=this.submit.bind(this);
   }
- /////////////////////////////
-
- ///////////////////////////
-
-
   handleChange(event){
     let name = event.target.name;
     let value = event.target.value;
@@ -45,11 +36,12 @@ class App extends Component {
       password : value.psw,
 
     });
-    console.log(list);
-
-    this.setState(list);// 
-    console.log(name,value);
-
+    this.setState({
+      list: event,
+      
+    },console.log(event),
+    )
+    
   }
 
   render() {
@@ -62,14 +54,8 @@ class App extends Component {
         <div>
         <Register/>
         </div>
-        </div>
- 
-      
+        </div>    
     );
   }
 }
-
-
-
-
 export default App;
