@@ -1,6 +1,9 @@
-import React from "react";
+//import React from "react";
 import "./App.css";
 import DateTimePicker from "react-datetime-picker";
+import App from "./App";
+import React, { Component } from "react";
+//import DateTimePicker from "react-datetime-picker";
 
 //TODO: Change this to a class component
 // onChange should be here
@@ -21,18 +24,40 @@ import DateTimePicker from "react-datetime-picker";
 // In your onSubmit call that props.onRegisterSubmit, and you will need to pass
 // appropriate data
 
-const Register = props => {
+class Register extends Component  {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      list: [],
+      // toggler: "Register",
+      userName: "",
+      fullName: "",
+      lastName: "",
+      email: "",
+      dob: "",
+      password: "",
+      
+    };
+    console.log('test ::::'+this.state);
+    //this.onRegisterSubmit = this.onRegisterSubmit.bind(this);
+     this.submit=this.submit.bind(this);
+  }
+
+
+render(){
   return (
     <div className="AppR">
-      <form onSubmit={props.submit}>
+      <form onSubmit={this.props.onRegisterSubmit}>
         <h3>Bangla Cricket Team</h3>
         <div>
           <div>Register</div>
           <input
             type="text"
             placeholder="Username"
-            value={props.uname}
-            onChange={props.handleChange}
+            value={this.props.uname}
+            // onChange={props.handleChange}
+            onChange={(event)=> this.setState({userName:event.target.value})}
             name="uname"
             required
           />
@@ -40,8 +65,9 @@ const Register = props => {
           <input
             type="text"
             placeholder="First Name"
-            value={props.fname}
-            onChange={props.handleChange}
+            value={this.props.fname}
+            //onChange={props.handleChange}
+            onChange={(event)=> this.setState({fullName:event.target.value})}
             name="fname"
             required
           />
@@ -49,8 +75,9 @@ const Register = props => {
           <input
             type="text"
             placeholder="Last Name"
-            value={props.lname}
-            onChange={props.handleChange}
+            value={this.props.lname}
+            //onChange={props.handleChange}
+            onChange={(event)=> this.setState({lastName:event.target.value})}
             name="lname"
             required
           />
@@ -58,8 +85,9 @@ const Register = props => {
           <input
             type="text"
             placeholder="Email"
-            value={props.email}
-            onChange={props.handleChange}
+            value={this.props.email}
+            //onChange={props.handleChange}
+            onChange={(event)=> this.setState({email:event.target.value})}
             name="email"
             required
           />
@@ -67,23 +95,26 @@ const Register = props => {
           <input
             type="password"
             placeholder="Enter Password"
-            value={props.psw}
-            onChange={props.handleChange}
+            value={this.props.psw}
+            //onChange={props.handleChange}
+            onChange={(event)=> this.setState({password:event.target.value})}
             name="psw"
             required
           />
           <div>
             <DateTimePicker
               name="date"
-              value={props.date}
-              handleChange={props.handleChange}
+              value={this.props.date}
+              // handleChange={props.handleChange}
+              onChange={(event)=> this.setState({dob:event.target.value})}
             />
           </div>
         </div>
         <input type="submit" value="Submit" />
       </form>
     </div>
+
   );
 };
-
+}
 export default Register;

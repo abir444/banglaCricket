@@ -8,7 +8,7 @@ class App extends Component {
     super(props);
     this.state = {
       list: [],
-      toggler: "Login"
+      //toggler: "Register"
       // uname : '',
       // fname : '',
       // Lname : '',
@@ -17,9 +17,11 @@ class App extends Component {
       // date: new Date(),
       //isLogin : false,
     };
-    this.handleChange = this.handleChange.bind(this);
+    console.log(this.state);
+    this.onRegisterSubmit = this.onRegisterSubmit.bind(this);
     // this.submit=this.submit.bind(this);
   }
+
 
   //TODO: This is supposed to be a onSubmit function and not onChange
 
@@ -30,11 +32,12 @@ class App extends Component {
   //TODO: Also I would like to see just Login or just Register at a time
   // so utilize the state "toggler", when you click on Register, you can see just register
 
-  handleChange(event) {
+  onRegisterSubmit(event) {
     let name = event.target.name;
     let value = event.target.value;
     let list = [];
     let data = [];
+    console.log("button worked")
     // let d =  new Date();
     data[name] = value;
     list.push({
@@ -57,10 +60,10 @@ class App extends Component {
     return (
       <div className="App">
         <div>
-          <Login />
+          {/* <Login /> */}
         </div>
         <div>
-          <Register />
+          <Register onSubmit={this.onRegisterSubmit} />
         </div>
         {/* This is just to view how your list looks like */}
         {JSON.stringify(this.state.list)}
