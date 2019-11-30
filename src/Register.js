@@ -30,7 +30,7 @@ class Register extends Component  {
     super(props);
     this.state = {
       list: [],
-      // toggler: "Register",
+     toggler: true,
       userName: "",
       fullName: "",
       lastName: "",
@@ -41,7 +41,7 @@ class Register extends Component  {
     };
     console.log('test ::::'+this.state);
     //this.onRegisterSubmit = this.onRegisterSubmit.bind(this);
-     this.submit=this.submit.bind(this);
+     //this.submit=this.submit.bind(this);
   }
 
 

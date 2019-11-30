@@ -8,7 +8,8 @@ class App extends Component {
     super(props);
     this.state = {
       list: [],
-      //toggler: "Register"
+      toggler: false,
+      
       // uname : '',
       // fname : '',
       // Lname : '',
@@ -59,12 +60,22 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <div>
-          {/* <Login /> */}
+       {this.state.toggler ? <Register /> : <Login />}
+       <button onClick={()=>{
+         this.setState({ toggler : true});
+       }}
+       >Register To the club
+       </button>
+
+
+
+       
+        {/* <div>
+          <Login />
         </div>
         <div>
           <Register onSubmit={this.onRegisterSubmit} />
-        </div>
+        </div> */}
         {/* This is just to view how your list looks like */}
         {JSON.stringify(this.state.list)}
       </div>
