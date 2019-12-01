@@ -8,7 +8,7 @@ class App extends Component {
     super(props);
     this.state = {
       list: [],
-      toggler: false,
+      toggler: true,
       
       // uname : '',
       // fname : '',
@@ -33,14 +33,14 @@ class App extends Component {
   //TODO: Also I would like to see just Login or just Register at a time
   // so utilize the state "toggler", when you click on Register, you can see just register
 
-  onRegisterSubmit(event) {
+ onRegisterSubmit(event) {
     let name = event.target.name;
     let value = event.target.value;
     let list = [];
     let data = [];
-    console.log("button worked")
+    console.log("button worked");
     // let d =  new Date();
-    data[name] = value;
+    data[name] = value; 
     list.push({
       userName: value.uname,
       fullName: value.fname,
@@ -51,9 +51,9 @@ class App extends Component {
     });
     this.setState(
       {
-        list: event
+        list: data,
       },
-      console.log(event)
+      console.log(data)
     );
   }
 

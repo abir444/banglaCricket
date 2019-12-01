@@ -39,16 +39,24 @@ class Register extends Component  {
       password: "",
       
     };
-    console.log('test ::::'+this.state);
+    console.log('test ::::'+this.state.userName);
     //this.onRegisterSubmit = this.onRegisterSubmit.bind(this);
-     //this.submit=this.submit.bind(this);
+    // this.submit=this.submit.bind(this);
   }
+  // onChange(event) {
+  //   let name = event.target.name;
+  //   let value = event.target.value;
+  //   this.setState({name: value});
+  // }
 
+
+  
 
 render(){
   return (
     <div className="AppR">
-      <form onSubmit={this.props.onRegisterSubmit}>
+      <form onSubmit={(event)=>{App.onRegisterSubmit(event)}}>
+      
         <h3>Bangla Cricket Team</h3>
         <div>
           <div>Register</div>
@@ -59,7 +67,7 @@ render(){
             // onChange={props.handleChange}
             onChange={(event)=> this.setState({userName:event.target.value})}
             name="uname"
-            required
+            
           />
           <br />
           <input
@@ -69,7 +77,7 @@ render(){
             //onChange={props.handleChange}
             onChange={(event)=> this.setState({fullName:event.target.value})}
             name="fname"
-            required
+            
           />
           <br />
           <input
@@ -79,7 +87,7 @@ render(){
             //onChange={props.handleChange}
             onChange={(event)=> this.setState({lastName:event.target.value})}
             name="lname"
-            required
+            
           />
           <br />
           <input
@@ -89,7 +97,7 @@ render(){
             //onChange={props.handleChange}
             onChange={(event)=> this.setState({email:event.target.value})}
             name="email"
-            required
+            
           />
           <br />
           <input
@@ -99,7 +107,7 @@ render(){
             //onChange={props.handleChange}
             onChange={(event)=> this.setState({password:event.target.value})}
             name="psw"
-            required
+            
           />
           <div>
             <DateTimePicker
@@ -112,6 +120,7 @@ render(){
         </div>
         <input type="submit" value="Submit" />
       </form>
+      {JSON.stringify(this.state.list)}
     </div>
 
   );
