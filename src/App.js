@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import DateTimePicker from "react-datetime-picker";
 import "./App.css";
 import Login from "./Login";
 import Register from "./Register";
@@ -8,76 +7,90 @@ class App extends Component {
     super(props);
     this.state = {
       list: [],
-      toggler: true,
-      
-      // uname : '',
-      // fname : '',
-      // Lname : '',
-      // email : '',
-      // psw   : '',
-      // date: new Date(),
-      //isLogin : false,
+      un: [],
+      ps: [],
+      toggler: false
     };
-    console.log(this.state);
     this.onRegisterSubmit = this.onRegisterSubmit.bind(this);
+    this.hello = this.hello.bind(this);    
     // this.submit=this.submit.bind(this);
   }
 
+  onRegisterSubmit() {
+    // we use this for binding    
+  }
+hello(){
+  console.log("hello boss");
+}
+  authentication(i){
 
-  //TODO: This is supposed to be a onSubmit function and not onChange
-
-  // So call this onSubmit function on your Submit button in Register
-  // Also name it onRegisterSubmit (it's more descriptive)
-  // This will make your code more readable
-
-  //TODO: Also I would like to see just Login or just Register at a time
-  // so utilize the state "toggler", when you click on Register, you can see just register
-
- onRegisterSubmit(event) {
-    let name = event.target.name;
-    let value = event.target.value;
-    let list = [];
-    let data = [];
-    console.log("button worked");
-    // let d =  new Date();
-    data[name] = value; 
-    list.push({
-      userName: value.uname,
-      fullName: value.fname,
-      lastName: value.lname,
-      email: value.email,
-      dob: value.date,
-      password: value.psw
-    });
-    this.setState(
-      {
-        list: data,
-      },
-      console.log(data)
-    );
+    let user = this.state.un;
+    console.log(user);
+    let pass = this.state.ps;
+    console.log(pass);
+    let userL = i.userName;
+    let pswL = i.password;
+    console.log(pswL);
+  
+// user.forEach(this.hello());
+    // if(user.map()=== userL.map()){
+    //   console.log("make sense");
+    // }
+    
+    if(userL===user && pswL === pass){
+      console.log("Login")
+    }else{
+      console.log("login failed");
+    }
   }
 
+  /**
+   * Use this function when you register a user so it can add to the list.
+   * @param {*} data
+   */
+  gettingRegisterData(data) {
+    //Here you're getting the data
+    console.log("GETTING DATA IN APP.JS");
+    console.log(data);
+    const list = this.state.list;
+    const un = this.state.un;
+    const ps = this.state.ps;
+
+   // list.push(data);
+    un.push(data.userName);
+    ps.push(data.password);
+    this.setState({ list, un , ps});
+  }
   render() {
     return (
       <div className="App">
-       {this.state.toggler ? <Register /> : <Login />}
-       <button onClick={()=>{
-         this.setState({ toggler : true});
-       }}
-       >Register To the club
-       </button>
+        <div>{/* <Login /> */}</div>
+        {this.state.toggler ? <Register 
+        onSubmit={this.onRegisterSubmit}
+        gettingRegisterData={this.gettingRegisterData.bind(this)}
+             
+        /> : <Login
+        onSubmit={this.onRegisterSubmit}
+        authentication={this.authentication.bind(this)}
+        />}
 
-
-
-       
-        {/* <div>
-          <Login />
-        </div>
-        <div>
-          <Register onSubmit={this.onRegisterSubmit} />
-        </div> */}
+        {/* register button */}
+          <button onClick={() => {
+            this.setState({ toggler: true });
+          }}>Register To the club
+        </button>
+          {/* login button */}
+        <button
+          onClick={() => {
+            this.setState({ toggler: false });
+          }}>Back to login!
+      </button>
+        
         {/* This is just to view how your list looks like */}
         {JSON.stringify(this.state.list)}
+        
+                {JSON.stringify(this.state.un)}
+        
       </div>
     );
   }
