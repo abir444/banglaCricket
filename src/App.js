@@ -31,19 +31,10 @@ hello(){
     let userL = i.userName;
     let pswL = i.password;
     console.log(pswL);
-  
-// user.forEach(this.hello());
-    // if(user.map()=== userL.map()){
-    //   console.log("make sense");
-    // }
-    
-    if(userL===user && pswL === pass){
-      console.log("Login")
-    }else{
-      console.log("login failed");
-    }
+    if(user.indexOf(userL)>-1  ){
+      console.log("login array")
+    };
   }
-
   /**
    * Use this function when you register a user so it can add to the list.
    * @param {*} data
@@ -54,12 +45,20 @@ hello(){
     console.log(data);
     const list = this.state.list;
     const un = this.state.un;
+     
     const ps = this.state.ps;
-
-   // list.push(data);
+    let checkU = data.userName;
+    let checkP = data.password; 
     un.push(data.userName);
+    console.log(un);
     ps.push(data.password);
+
     this.setState({ list, un , ps});
+    if(un.indexOf(checkU)>-1){
+      console.log('ok')
+    }else{
+      alert('name matching is working');
+    }
   }
   render() {
     return (

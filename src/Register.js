@@ -29,12 +29,12 @@ class Register extends Component {
     super(props);
     this.state = {
       toggler: true,
-      userName: "",
+      userName: [],
       fullName: "",
       lastName: "",
       email: "",
       dob: "",
-      password: ""
+      password: []
     };
     
   }
