@@ -59,7 +59,8 @@ class Register extends Component {
     return (
       <div className="AppR">
         <form onSubmit={this.onRegister.bind(this)}>
-          <h3>Bangla Cricket Team</h3>
+          <h1>Bangla Cricket Team</h1>
+          <h4>console based app. Please register</h4>
           <div>
             <div>Register</div>
             <input

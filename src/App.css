@@ -20,3 +20,14 @@
 .App-link {
   color: #09d3ac;
 }
+.App{
+  background-image: url("pitch.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 500px;
+  width: 900px;
+  orientation: center;
+
+  
+
+}

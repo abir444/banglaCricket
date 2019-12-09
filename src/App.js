@@ -31,9 +31,11 @@ hello(){
     let userL = i.userName;
     let pswL = i.password;
     console.log(pswL);
-    if(user.indexOf(userL)>-1  ){
-      console.log("login array")
-    };
+    if(user.indexOf(userL)>-1 && pass.indexOf(pswL)>-1  ){
+      alert("Welcome")
+    }else{
+      alert("PLease register and try again !")
+    }
   }
   /**
    * Use this function when you register a user so it can add to the list.
@@ -43,23 +45,24 @@ hello(){
     //Here you're getting the data
     console.log("GETTING DATA IN APP.JS");
     console.log(data);
+    alert('Cheers! Happy membership!!')
     const list = this.state.list;
-    const un = this.state.un;
-     
+    const un = this.state.un; 
     const ps = this.state.ps;
+    
     let checkU = data.userName;
     let checkP = data.password; 
-    un.push(data.userName);
-    console.log(un);
-    ps.push(data.password);
-
-    this.setState({ list, un , ps});
-    if(un.indexOf(checkU)>-1){
-      console.log('ok')
+    if(un.indexOf(checkU)>-1 || ps.indexOf(checkP)>-1 ){
+      alert('already exists');
     }else{
-      alert('name matching is working');
-    }
+    un.push(checkU);
+    console.log(un);
+    ps.push(checkP);
   }
+
+     this.setState({ list, un , ps});
+  }
+
   render() {
     return (
       <div className="App">
